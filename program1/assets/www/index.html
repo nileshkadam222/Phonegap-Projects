@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      
+    function Add() {
+            var n1=parseInt(document.getElementById("num1").value, 10);
+            var n2=parseInt(document.getElementById("num2").value, 10);
+            alert(n1);
+            alert(n2);
+            var n3=n1+n2;
+             alert(n3);
+            document.getElementById("output").innerHTML = n3;            
+        };
+
+        function init() {
+            document.addEventListener("deviceready",Add, true);
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h2>Addition of two number</h2>
+
+	<input type="text" id="num1"/><br>
+	<input type="text" id="num2"/><br>
+	<input type="button" value="Addition" onclick="Add()">
+	<h2>output:</h2><h2 id="output"></h2>
+
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      
+        function datetime ()
+        {
+			var dt=new Date();
+			var a=dt.getHours();
+			var b=dt.getMinutes();
+			var c=dt.getSeconds();
+			var d=device.platform; 
+			alert(d);
+			alert(a);
+			alert(b);
+			alert(c);
+			document.getElementById("hr").innerHTML=dt.getHours();
+			document.getElementById("min").innerHTML=dt.getMinutes();
+			document.getElementById("second").innerHTML=dt.getSeconds();    
+			document.getElementById("ver").innerHTML=d;  
+			 
+        }
+
+        function init() {
+            document.addEventListener("deviceready", datetime, true);
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <table>
+    <tr><td>Date time</td><tr>
+    <tr><td id="hr"></td><td>:</td>
+    	<td id="min"></td><td>:</td>
+    	<td id="second"></td>
+    	
+    </tr>
+   
+    </table>
+   
+    <h2 id="ver"></h2>
+ 
+    
+
+  </body>
+</html>

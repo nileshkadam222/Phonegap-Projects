@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      
+        var onDeviceReady = function() {
+            document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+        	document.getElementById("ver").innerHTML=device.cordova;
+        	document.getElementById("mo").innerHTML=device.model;
+        	document.getElementById("pl").innerHTML=device.platform;
+        	document.getElementById("uu").innerHTML=device.uuid;
+        	document.getElementById("ve").innerHTML=device.version;
+        	document.getElementById("ma").innerHTML=device.manufacture;
+        	document.getElementById("se").innerHTML=device.serial;
+        };
+
+        function init() {
+            document.addEventListener("deviceready", onDeviceReady, true);
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h2>Minimal AppLaud App</h2>
+
+	<p>Your app goes here.</p>
+	<p>
+    <span id="devready">onDeviceReady not fired.</span>
+    <span id="ver"></span>
+    <h1 id="mo"></h1>
+     <h1 id="pl"></h1>
+      <h1 id="uu"></h1>
+       <h1 id="ve"></h1>
+        <h1 id="ma"></h1>
+         <h1 id="de"></h1>
+    </p>
+
+  </body>
+</html>

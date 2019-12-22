@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      function alertDismiss()
+      {
+      alert("you press ok");
+      }
+      
+      function Alert()
+      {
+      	
+      	navigator.notification.alert('You won',alertDismiss,'Game Over','Done');
+      }
+      
+        var onDeviceReady = function() {
+            document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+        };
+      
+
+//Confirm code
+function onConfirm(buttonIndex)
+{
+alert("you selectd"+ buttonIndex);
+}
+
+function Confirm()
+{
+alert("cll");
+navigator.notification.confirm('Select any one',onConfirm,'are you proceed',['Restart','Exit']);
+}
+
+//beep
+function Beep()
+{
+	var number=document.getElementById("beeps").value;
+	var meterValue=document.getElementById("m1");
+	navigator.notification.beep(number);
+	meterValue.value=number;
+	alert("beep call");
+	
+}
+
+
+
+        function init() {
+            document.addEventListener("deviceready", onDeviceReady, true);
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h2>Minimal AppLaud App</h2>
+
+	<p>Your app goes here.</p>
+	<p>
+    <span id="devready">onDeviceReady not fired.</span>
+    
+    
+    </p>
+	Message:<input type="text" id="message"><br>
+    <button onclick= "Alert()">Alert</button>
+    <button onclick="Confirm()">Confirm</button><br>
+    number of beeps:<input type="text" id="beeps"><br>
+    <button onclick="Beep()">Beep</button>
+    meter:<meter value="" min="0" max="10" id="m1"></meter>
+    
+  </body>
+</html>

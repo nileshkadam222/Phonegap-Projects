@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      
+        var onDeviceReady = function() {
+            
+            document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+           
+            document.addEventListener("searchbutton",onBack,true);
+           
+        };
+        var onDeviceOnline=function()
+        {
+        navigator.notification.alert("google is online",openGoogle,"alert","go");
+        }
+        function openGoogle()
+        {
+        window.open("http://www.google.com");
+        }
+        
+        function onBack()
+        {
+       	 navigator.notification.alert("google is back");
+       
+        }
+        
+        var onDeviceoffline=function()
+        {
+        alert("offline");
+        }
+
+		        function init() {
+            document.addEventListener("deviceready", onDeviceReady, true);
+            document.addEventListener("online", onDeviceOnline, true);
+            document.addEventListener("offline", onDeviceOffline, true);
+            
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <h2>Minimal AppLaud App</h2>
+
+	<p>Your app goes here.</p>
+	<p>
+    <span id="devready">onDeviceReady not fired.</span>
+    <span id="call"></span>
+    </p>
+
+  </body>
+</html>

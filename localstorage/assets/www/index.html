@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Minimal AppLaud App</title>
+
+	  <script type="text/javascript" charset="utf-8" src="cordova-1.9.0.js"></script>
+	  <script type="text/javascript" charset="utf-8">
+      
+     function storevalue()
+     {
+     	var name= document.getElementById("name").value;
+     	var password=document.getElementById("pass").value;
+     	var s=window.localStorage;
+     	s.setItem("name",name);
+     	s.setItem("password",password);
+     	alert(name);
+     	return true;
+     }
+      
+      
+        var onDeviceReady = function() {
+            document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
+        };
+
+        function init() {
+            document.addEventListener("deviceready", onDeviceReady, true);
+        }   
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+    <form action="welcome.html" onsubmit="return storevalue()">
+    <input type="text" id="name"></br>
+    <input type="text" id="pass"></br>
+    <input type="submit" value="submit">
+    
+    <form>
+  </body>
+</html>

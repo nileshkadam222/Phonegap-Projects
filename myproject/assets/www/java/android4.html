@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JAVA Question</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+  .jumbotron {
+      background-color: #0000FF;
+      color: #fff;
+      padding: 50px 25px;
+      font-family: Montserrat, sans-serif;
+  }
+
+</style>
+
+</head>
+<body style="height:1500px">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">JAVA</a>
+    </div>
+    
+  </div>
+</nav>
+  <div class="jumbotron">
+  <h2>What is finalize method in JAVA?</h2>
+  <h5>
+256
+down vote
+The finalize method is called when an object is about to get garbage collected. That can be at any time after it has become eligible for garbage collection.
+
+Note that it's entirely possible that an object never gets garbage collected (and thus finalize is never called). This can happen when the object never becomes eligible for gc (because it's reachable through the entire lifetime of the JVM) or when no garbage collection actually runs between the time the object become eligible and the time the JVM stops running (this often occurs with simple test programs).
+
+There are ways to tell the JVM to run finalize on objects that it wasn't called on yet, but using them isn't a good idea either (the guarantees of that method aren't very strong either).
+
+If you rely on finalize for the correct operation of your application, then you're doing something wrong. finalize should only be used for cleanup of (usually non-Java) resources. And that's exactly because the JVM doesn't guarantee that finalize is ever called on any object.</h5>
+</div>
+
+
+
+
+
+</body>
+</html>

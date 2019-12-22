@@ -1,0 +1,259 @@
+<html>
+<head>
+ <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>TechStudypro-interview</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+	
+@import "font-awesome.min.css";
+@import "font-awesome-ie7.min.css";
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+</style>
+
+<script type="text/javascript" charset="utf-8">
+var onDeviceReady = function() {
+document.getElementById("devready").innerHTML = "OnDeviceReady fired.";};
+function creat(tx){
+
+tx.executeSql('CREATE TABLE IF NOT EXISTS login (name varchar,email varchar,pass varchar)');
+alert("table created");
+
+
+
+if(em == null || em ==""){
+    alert("Email must be filled out");
+   
+   
+    }
+    
+ if (nm == null || nm == "") {
+         validation=0;
+        alert("Name must be filled out");
+       
+    }
+    
+    
+     if (cp == null || cp == "") {
+         validation=0;
+        alert("Confirm password must be filled out");
+       
+    }
+  var atpos = em.indexOf("@");
+         var dotpos = em.lastIndexOf(".");
+         
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            
+            alert("Please enter correct email ID")
+            
+         }
+
+if(validation==1)
+{
+var query='INSERT INTO login (name,email,pass) VALUES ("'+nm+'","'+em+'","'+ep+'")';
+tx.executeSql(query);
+alert("records inserted");}
+}
+function success(){
+alert("Table Created");}
+function error(err){
+alert("Table Not Created" + err.code);}
+
+
+function init() {
+document.addEventListener("deviceready", onDeviceReady, true);}
+
+function add(){
+alert("Calling Add");
+var db = window.openDatabase("emp", "1.0", "Emp DB", 100000);
+db.transaction(creat,error,success);}
+
+//funcation display
+function display(){
+alert("Calling Display");
+var validation=1;
+
+var em=document.getElementById("uemail").value;
+var ep=document.getElementById("upass").value;
+
+if (em == null || em == "") {
+         validation=0;
+        alert("Email Address must be filled out");
+         validation=0;
+       
+    }
+      
+  if (ep == null || ep == "") {
+        validation=0;
+        alert("Password must be filled out");
+         validation=0;
+       
+    }
+    
+if(validation==1)
+{
+
+
+var db = window.openDatabase("emp", "1.0", "Emp DB", 100000);
+db.transaction(queryDB, errorDB);}
+function queryDB(tx){
+tx.executeSql('SELECT * FROM login', [], querySuccess, errorDB);}
+function querySuccess(tx, results){
+var len = results.rows.length;
+var string = " ";
+string="<table border=1><tr><td><h3>Name</h3></td><td><h3>Email</h3></td><td><h3>Password</h3></td></tr>";
+ var lg=1;
+for (var i=0;i<len;i++){
+var email1=results.rows.item(i).email;
+var pass1=results.rows.item(i).pass
+
+ if(em==email1 && ep == pass1)
+ {
+ 	var lg=0;
+ 	alert("login sucessfull");
+ 	
+ 	window.location="catagery.html";
+	string+= "<tr><td>"+results.rows.item(i).name +"</td><td>"+results.rows.item(i).email+"</td><td>"+results.rows.item(i).pass+"</td>";
+string += "</tr>";}string+="</table>";
+ }
+if(lg == 1)
+{
+alert("Plese Register");
+window.location="registration.html";
+}
+
+
+
+}
+
+
+
+function errorDB(err){
+alert("Error processing SQL: "+err.code);}
+}
+
+</script>
+
+
+</head>
+
+
+<body onload="init();" id="stage" class="theme">
+
+<div class="container">
+    <h1 class="well">Login Form</h1>
+	<div class="col-lg-12 well">
+	<div class="row">
+			
+					<div class="col-sm-12">
+								
+						<div class="form-group">
+							<label>Email</label>
+							<textarea placeholder="Enter Email Address Here.." id="uemail" class="form-control"></textarea>
+						</div>	
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>Password</label>
+								<input type="password" placeholder="Enter Password Here.." id="upass" class="form-control">
+							</div>
+								
+								</div>
+											<button id="display" onclick="display()">Login</button>
+											
+											
+				
+					</div>
+				
+				</div>
+	</div>
+	</div>
+	</body>
+	</html>
